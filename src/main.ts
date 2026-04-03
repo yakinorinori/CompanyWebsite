@@ -16,6 +16,39 @@ interface ContactFormData {
 }
 
 /**
+ * ハンバーガーメニュー初期化
+ */
+function initializeHamburgerMenu(): void {
+    const hamburgerToggle = document.getElementById('hamburger-toggle') as HTMLButtonElement;
+    const navMenu = document.getElementById('nav-menu') as HTMLUListElement;
+    
+    if (!hamburgerToggle || !navMenu) return;
+    
+    // ハンバーガーボタンクリック時
+    hamburgerToggle.addEventListener('click', () => {
+        hamburgerToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    
+    // メニューのリンククリック時はメニューを閉じる
+    const navLinks = navMenu.querySelectorAll('.nav-link') as NodeListOf<HTMLAnchorElement>;
+    navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            hamburgerToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+    
+    // ウィンドウリサイズでメニューリセット
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            hamburgerToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+}
+
+/**
  * お問い合わせフォームの初期化
  */
 function initializeContactForm(): void {
@@ -214,6 +247,9 @@ document.addEventListener('DOMContentLoaded', () => {
     loadDeviceSpecificStyles();
     setupResponsiveListener();
     logDeviceInfo();
+    
+    // ハンバーガーメニュー初期化
+    initializeHamburgerMenu();
     
     // 既存の初期化
     initializeContactForm();

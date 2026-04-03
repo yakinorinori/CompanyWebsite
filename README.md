@@ -1,7 +1,7 @@
 # Company Website
 
 企業向けウェブサイト
-
+https://yakinorinori.github.io/CompanyWebsite/
 ## 機能
 
 - **企業情報/プロフィール**: 会社概要、ミッション、基本情報の表示
