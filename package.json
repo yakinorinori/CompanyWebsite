@@ -2,7 +2,7 @@
   "name": "company-website",
   "version": "1.0.0",
   "description": "企業ウェブサイト",
-  "homepage": "https://yakinorinori.github.io/ALBACompanyWebsite/",
+  "homepage": "https://yakinorinori.github.io/CompanyWebsite/",
   "main": "index.html",
   "scripts": {
     "build": "tsc",
