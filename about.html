@@ -131,6 +131,8 @@
         </p>
     </footer>
 
-    <script type="module" src="./dist/main.js"></script>
+    <script type="module">
+        import('./dist/main.js').catch(err => console.error('Failed to load main.js:', err));
+    </script>
 </body>
 </html>
