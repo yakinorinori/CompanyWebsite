@@ -398,3 +398,8 @@ a, button, input[type="submit"], input[type="button"] {
     align-items: center;
     justify-content: center;
 }
+
+/* Business Popup Section - Hide on Mobile */
+.business-popup {
+    display: none;
+}
