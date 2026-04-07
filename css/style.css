@@ -1310,6 +1310,10 @@ small {
 
 /* Responsive Design */
 @media (min-width: 769px) {
+    .hamburger-menu {
+        display: none !important;
+    }
+
     .service-page-image {
         width: 75% !important;
         height: 280px !important;
