@@ -468,8 +468,8 @@ small {
     font-size: 4rem;
     margin-bottom: 1.5rem;
     font-family: var(--jp-font);
-    color: white;
-    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.3);
+    color: #F2F5F8;
+    -webkit-text-stroke: 0.5px rgba(242, 245, 248, 0.3);
     font-weight: 700;
     line-height: 1.2;
 }
@@ -477,9 +477,9 @@ small {
 .hero-mission {
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.95);
+    color: #F2F5F8;
     font-family: var(--jp-font);
-    -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.2);
+    -webkit-text-stroke: 0.3px rgba(242, 245, 248, 0.2);
     font-weight: 600;
 }
 
