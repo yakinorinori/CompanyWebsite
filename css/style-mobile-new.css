@@ -492,8 +492,15 @@
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
     display: block;
-    color: var(--text-dark);
-    font-weight: 600;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+/* 必須フィールド記号 */
+.form-group label .required {
+    color: #E63946;
+    font-weight: 900;
+    margin-left: 0.3rem;
 }
 
 .form-group input,
@@ -506,6 +513,14 @@
     border: 1px solid var(--border-color);
     color: var(--text-dark);
     font-family: inherit;
+}
+
+/* プレースホルダーのスタイル */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #98A4B3;
+    font-style: italic;
+    opacity: 0.8;
 }
 
 .form-group input:focus,
@@ -536,6 +551,44 @@
 
 .submit-btn:active {
     transform: scale(0.98);
+}
+
+/* ボタンスタイル */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: var(--jp-font);
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 82, 204, 0.2);
+    width: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: white;
+    box-shadow: 0 10px 25px rgba(0, 82, 204, 0.25);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.btn-lg {
+    padding: 1.3rem 2.8rem;
+    font-size: 1.1rem;
+    min-height: 52px;
 }
 
 /* ========================================
@@ -575,6 +628,23 @@
 
 .section:nth-child(odd) {
     background-color: var(--light-bg);
+}
+
+/* セクション背景色クラス */
+.section.bg-light {
+    background-color: var(--light-bg);
+}
+
+.section.bg-white {
+    background-color: var(--white);
+}
+
+.bg-light {
+    background-color: var(--light-bg);
+}
+
+.bg-white {
+    background-color: var(--white);
 }
 
 /* タイポグラフィ */
