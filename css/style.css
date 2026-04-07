@@ -548,6 +548,7 @@ small {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 12px 12px 0 0;
 }
 
 .popup-image::after {
@@ -562,18 +563,18 @@ small {
 }
 
 .popup-image img {
-    width: 100px;
-    height: 100px;
-    max-width: 100px;
-    max-height: 100px;
+    width: 90px;
+    height: 90px;
+    max-width: 90px;
+    max-height: 90px;
     object-fit: contain;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
 
 .popup-card:hover .popup-image img {
-    transform: scale(1.08);
+    transform: scale(1.15);
 }
 
 .popup-content {
