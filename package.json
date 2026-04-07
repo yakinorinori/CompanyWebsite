@@ -5,11 +5,12 @@
   "homepage": "https://yakinorinori.github.io/CompanyWebsite/",
   "main": "index.html",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp index.html dist/ && cp -r css dist/ && cp -r images dist/ && sed -i '' 's|src=\"dist/main.js\"|src=\"main.js\"|g' dist/index.html && sed -i '' 's|href=\"css/|href=\"css/|g' dist/index.html",
     "watch": "tsc --watch",
-    "start": "tsc && python3 -m http.server 8000",
+    "start": "tsc && cp index.html dist/ && cp -r css dist/ && cp -r images dist/ && sed -i '' 's|src=\"dist/main.js\"|src=\"main.js\"|g' dist/index.html && python3 -m http.server 8000",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d ."
+    "deploy": "gh-pages -d dist -b gh-pages",
+    "clean": "rm -rf dist/"
   },
   "keywords": [
     "company",
