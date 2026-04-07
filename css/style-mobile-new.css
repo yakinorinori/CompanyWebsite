@@ -1,0 +1,586 @@
+/* ========================================
+   モバイル専用スタイルシート - 画像メインレイアウト
+   スマートフォン（幅 < 768px）用の革新的なデザイン
+   ======================================== */
+
+:root {
+    --primary-color: #3B9AF5;
+    --secondary-color: #0052CC;
+    --accent-color: #001F3F;
+    --light-bg: #F5F9FE;
+    --white: #FFFFFF;
+    --text-dark: #0D1B2A;
+    --text-light: #6B7280;
+    --border-color: #D1E0F5;
+    --shadow: 0 8px 20px rgba(59, 154, 245, 0.25);
+    --shadow-hover: 0 16px 40px rgba(59, 154, 245, 0.4);
+    --gradient-primary: linear-gradient(135deg, #0052CC 0%, #3B9AF5 100%);
+    --gradient-dark: linear-gradient(135deg, #001F3F 0%, #0052CC 100%);
+}
+
+/* ========================================
+   ナビゲーションバー
+   ======================================== */
+.navbar {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    user-select: none;
+    z-index: 100;
+}
+
+.nav-logo .logo-img {
+    height: 40px;
+}
+
+/* ハンバーガーメニュー */
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 101;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.3s ease;
+    z-index: 99;
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-item {
+    width: 100%;
+}
+
+.nav-link {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+    display: block;
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: var(--light-bg);
+    color: var(--accent-color);
+}
+
+.nav-cta {
+    background: var(--gradient-primary) !important;
+    color: white !important;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+/* ========================================
+   ヒーロー部分 - 画像フルスクリーン
+   ======================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: var(--gradient-dark);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 2rem;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../images/main.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    color: white;
+    text-align: left;
+    padding: 0 1.5rem;
+    max-width: 100%;
+}
+
+.hero-content h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+/* ========================================
+   ビジネスカードセクション（非表示）
+   ======================================== */
+.business-popup {
+    display: none;
+}
+
+/* ========================================
+   プロフィール部分 - 画像メイン
+   ======================================== */
+.profile {
+    position: relative;
+    padding: 0;
+    margin-top: 2rem;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: auto;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+}
+
+.profile-image {
+    position: relative;
+    order: -1;
+    height: 300px;
+    width: 100%;
+    border-radius: 0;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.profile-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-overlay {
+    position: relative;
+    padding: 2rem 1.5rem;
+    background: white;
+    height: auto;
+    display: block;
+}
+
+.profile-info {
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    backdrop-filter: none;
+    box-shadow: none;
+    border: none;
+    color: var(--text-dark);
+}
+
+.profile-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.profile-info p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.info-list {
+    margin-top: 1.5rem;
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-list li {
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+}
+
+.info-list strong {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.profile-mission {
+    padding: 1.5rem;
+    background: var(--light-bg);
+    border-left: 4px solid var(--primary-color);
+    margin: 2rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.profile-mission h3 {
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.profile-mission p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   サービスセクション - 画像メイン
+   ======================================== */
+.section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 0 1.5rem;
+}
+
+.services-intro {
+    padding: 2rem 0;
+    background: white;
+}
+
+.service-page {
+    position: relative;
+    min-height: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-page-container {
+    flex-direction: column;
+    gap: 0;
+    max-width: 100%;
+    padding: 0;
+    display: flex;
+}
+
+.service-page-image {
+    width: 100% !important;
+    height: 300px !important;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.service-page-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-page-content {
+    width: 100% !important;
+    padding: 2rem 1.5rem;
+    background: white;
+}
+
+.service-page-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    text-align: left;
+    padding: 0;
+}
+
+.service-page-content p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* ========================================
+   コンタクトセクション
+   ======================================== */
+.contact {
+    padding: 2rem 1.5rem;
+    background: white;
+}
+
+.contact h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.neon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(59, 154, 245, 0.1), rgba(0, 82, 204, 0.05));
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.neon-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.neon-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.neon-content {
+    color: var(--text-dark);
+}
+
+.neon-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* フォーム */
+.contact-form {
+    padding: 1.5rem;
+    background: var(--light-bg);
+    border-radius: 12px;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    font-size: 1rem;
+    padding: 0.8rem;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    color: var(--text-dark);
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 154, 245, 0.1);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* ========================================
+   フッター
+   ======================================== */
+.footer {
+    padding: 2rem 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+    background: var(--accent-color);
+    color: white;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+/* ========================================
+   一般的な要素
+   ======================================== */
+.container {
+    max-width: 100%;
+    padding: 0;
+}
+
+.section {
+    padding: 2rem 0;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+p {
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   タッチターゲット
+   ======================================== */
+button,
+a,
+input[type="submit"],
+input[type="button"] {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ========================================
+   ショートスクリーン対応
+   ======================================== */
+@media (max-height: 600px) {
+    .hero {
+        height: 80vh;
+    }
+    
+    .profile-image {
+        height: 200px;
+    }
+    
+    .service-page-image {
+        height: 200px !important;
+    }
+}

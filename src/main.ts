@@ -200,7 +200,7 @@ function loadDeviceSpecificStyles(): void {
             const link = document.createElement('link');
             link.id = 'mobile-stylesheet';
             link.rel = 'stylesheet';
-            link.href = 'css/style-mobile.css';
+            link.href = 'css/style-mobile-new.css';
             head.appendChild(link);
             console.log('Mobile stylesheet loaded:', device.width + 'px');
         }
