@@ -446,15 +446,16 @@ small {
     z-index: 4;
     opacity: 0;
     animation: fadeInUp 0.85s ease 0.85s forwards;
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 100%;
-    padding-left: 0;
+    padding-left: 4rem;
     padding-top: 0;
     gap: 2rem;
+    max-width: 50%;
 }
 
 /* ロゴセクション（デスクトップ用） */
@@ -1382,6 +1383,11 @@ small {
 
     #service-transportation .service-page-image img {
         object-position: center bottom !important;
+    }
+
+    /* ヒーロー部のボタンを非表示 */
+    .hero-cta-section {
+        display: none !important;
     }
 }
 
