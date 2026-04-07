@@ -90,7 +90,7 @@
     </section>
 
     <!-- Profile Section -->
-    <section id="profile" class="section profile">
+    <section id="profile" class="section profile bg-light">
         <div class="container">
             <h2>企業情報</h2>
             <div class="profile-content">
@@ -100,33 +100,39 @@
                 <div class="profile-overlay">
                     <div class="profile-info">
                         <h3>株式会社　ALBA</h3>
-                        <p>会社の概要を記入してください</p>
+                        <p>セールスプロモーション、コンサルティング、運送、不動産を中心に、幅広いビジネスソリューションを提供し、クライアントの成長と成功をサポートしています。</p>
                         <ul class="info-list">
                             <li><strong>設立年月日：</strong> 2026年3月11日</li>
                             <li><strong>所在地：</strong> 愛知県名古屋市名東区上社1-802</li>
                             <li><strong>代表者：</strong> 田代 清一</li>
-                            <li><strong>従業員数：</strong> 数名</li>
+                            <li><strong>従業員数：</strong> 数名から数十名規模</li>
+                            <li><strong>電話：</strong> 090-9177-1955</li>
+                            <li><strong>メール：</strong> tashiro@alba1119onmicrosoft.com</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="profile-mission">
                 <h3>ミッション</h3>
-                <p>企業のミッション・ビジョンを記入してください</p>
-                <p>私たちは顧客満足度を最優先に、高品質なサービスを提供することをお約束します。</p>
+                <p><strong>「クライアントの可能性を最大化させる」</strong></p>
+                <p>私たちは、単なるサービス提供者ではなく、クライアントの最良のビジネスパートナーを目指しています。</p>
+                <p>セールスプロモーション、コンサルティング、運送、不動産のそれぞれの領域で、専門知識と実績を活かし、高品質なサービスを提供することをお約束します。</p>
+                <h3 style="margin-top: var(--spacing-2xl);">ビジョン</h3>
+                <p><strong>「すべてのクライアントにとって信頼できるパートナー企業になる」</strong></p>
+                <p>業界トップレベルのサービス品質を目指し、継続的にスキルと知見を磨きながら、クライアントのビジネス成長を全面的にサポートします。</p>
             </div>
         </div>
     </section>
 
     <!-- Services Section - Individual Pages -->
-    <section id="services" class="section services-intro">
+    <section id="services" class="section services-intro bg-white">
         <div class="container">
             <h2>サービス紹介</h2>
         </div>
     </section>
 
     <!-- Service Page 1: Sales Promotion -->
-    <section id="service-sales" class="service-page">
+    <section id="service-sales" class="service-page bg-light">
         <div class="service-page-container">
             <div class="service-page-image">
                 <img src="images/sales.jpeg" alt="セールスプロモーション" loading="lazy">
@@ -140,7 +146,7 @@
     </section>
 
     <!-- Service Page 2: Consulting -->
-    <section id="service-consulting" class="service-page">
+    <section id="service-consulting" class="service-page bg-white">
         <div class="service-page-container">
             <div class="service-page-image">
                 <img src="images/consultant.jpeg" alt="コンサルティング" loading="lazy">
@@ -154,7 +160,7 @@
     </section>
 
     <!-- Service Page 3: Transportation -->
-    <section id="service-transportation" class="service-page">
+    <section id="service-transportation" class="service-page bg-light">
         <div class="service-page-container">
             <div class="service-page-image">
                 <img src="images/transportation.jpeg" alt="運送事業" loading="lazy">
@@ -168,7 +174,7 @@
     </section>
 
     <!-- Service Page 4: Real Estate -->
-    <section id="service-real_estate" class="service-page">
+    <section id="service-real_estate" class="service-page bg-white">
         <div class="service-page-container">
             <div class="service-page-image">
                 <img src="images/real_estate.jpeg" alt="不動産事業" loading="lazy">
@@ -182,7 +188,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section contact">
+    <section id="contact" class="section contact bg-light">
         <div class="container">
             <h2>お問い合わせ</h2>
             <div class="contact-cards">
@@ -234,21 +240,21 @@
                 <h2>メッセージを送信</h2>
                 <form class="contact-form" action="https://formsubmit.co/37d09a1388576457258157be8924c78d" method="POST">
                     <div class="form-group">
-                        <label for="name">お名前</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="name">お名前 <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="例）山田 太郎" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">メールアドレス</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email">メールアドレス <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="例）yamada@example.com" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">電話番号</label>
-                        <input type="tel" id="phone" name="phone">
+                        <input type="tel" id="phone" name="phone" placeholder="090-××××-××××">
                     </div>
                     <div class="form-group">
-                        <label for="category">お問い合わせカテゴリー</label>
+                        <label for="category">お問い合わせカテゴリー <span class="required">*</span></label>
                         <select id="category" name="category" required>
-                            <option value="">選択してください</option>
+                            <option value="">-- 選択してください --</option>
                             <option value="sales">営業・パートナーシップ</option>
                             <option value="consulting">コンサルティング</option>
                             <option value="transport">運送サービス</option>
@@ -259,16 +265,16 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="subject">件名</label>
-                        <input type="text" id="subject" name="subject" required>
+                        <label for="subject">件名 <span class="required">*</span></label>
+                        <input type="text" id="subject" name="subject" placeholder="例）新しいビジネスパートナーシップについて" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">お問い合わせ内容</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="message">お問い合わせ内容 <span class="required">*</span></label>
+                        <textarea id="message" name="message" rows="6" placeholder="ご質問・ご相談内容を詳しくお聞かせください..." required></textarea>
                     </div>
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_next" value="http://localhost:8000/index.html">
-                    <button type="submit" class="btn btn-primary">送信する →</button>
+                    <button type="submit" class="btn btn-primary btn-lg">お問い合わせを送信する</button>
                 </form>
                 <div id="formMessage" class="form-message"></div>
             </div>
