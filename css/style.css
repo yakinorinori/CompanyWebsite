@@ -269,17 +269,18 @@ small {
 .nav-logo .logo-img {
     height: 50px;
     width: auto;
-    background: rgba(255, 255, 255, 0.80);
+    background: #ffffff !important;
     padding: 0.4rem 0.6rem;
     border-radius: 8px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     transition: all 0.3s ease;
+    border: 2px solid rgba(59, 154, 245, 0.2);
 }
 
 .nav-logo:hover .logo-img {
-    background: rgb(255, 255, 255);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    background: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(59, 154, 245, 0.4) !important;
     transform: scale(1.05);
 }
 
