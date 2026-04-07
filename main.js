@@ -1,45 +1,21 @@
-// メインアプリケーションのTypeScriptコード
-
-/**
- * ★★★ ここでFormSubmitエンドポイントを設定 ★★★
- * クライアントごとに変更してください
- * index.htmlの form action属性と同じ値にしてください
- */
+"use strict";
 const FORMSUBMIT_ENDPOINT = '37d09a1388576457258157be8924c78d';
-
-interface ContactFormData {
-    name: string;
-    email: string;
-    phone: string;
-    subject: string;
-    message: string;
-}
-
-/**
- * ハンバーガーメニュー初期化
- */
-function initializeHamburgerMenu(): void {
-    const hamburgerToggle = document.getElementById('hamburger-toggle') as HTMLButtonElement;
-    const navMenu = document.getElementById('nav-menu') as HTMLUListElement;
-    
-    if (!hamburgerToggle || !navMenu) return;
-    
-    // ハンバーガーボタンクリック時
+function initializeHamburgerMenu() {
+    const hamburgerToggle = document.getElementById('hamburger-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    if (!hamburgerToggle || !navMenu)
+        return;
     hamburgerToggle.addEventListener('click', () => {
         hamburgerToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
-    
-    // メニューのリンククリック時はメニューを閉じる
-    const navLinks = navMenu.querySelectorAll('.nav-link') as NodeListOf<HTMLAnchorElement>;
+    const navLinks = navMenu.querySelectorAll('.nav-link');
     navLinks.forEach((link) => {
         link.addEventListener('click', () => {
             hamburgerToggle.classList.remove('active');
             navMenu.classList.remove('active');
         });
     });
-    
-    // ウィンドウリサイズでメニューリセット
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 768) {
             hamburgerToggle.classList.remove('active');
@@ -47,41 +23,26 @@ function initializeHamburgerMenu(): void {
         }
     });
 }
-
-/**
- * お問い合わせフォームの初期化
- */
-function initializeContactForm(): void {
-    const form = document.querySelector('.contact-form') as HTMLFormElement;
-
-    if (!form) return;
-
-    // FormSubmitへの送信前バリデーション
-    form.addEventListener('submit', (event: Event) => {
+function initializeContactForm() {
+    const form = document.querySelector('.contact-form');
+    if (!form)
+        return;
+    form.addEventListener('submit', (event) => {
         const formData = getFormData(form);
-
         if (!validateForm(formData)) {
             event.preventDefault();
         }
     });
-
-    /**
-     * フォームデータを取得
-     */
-    function getFormData(form: HTMLFormElement): ContactFormData {
+    function getFormData(form) {
         return {
-            name: (form.elements.namedItem('name') as HTMLInputElement).value,
-            email: (form.elements.namedItem('email') as HTMLInputElement).value,
-            phone: (form.elements.namedItem('phone') as HTMLInputElement).value,
-            subject: (form.elements.namedItem('subject') as HTMLInputElement).value,
-            message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+            name: form.elements.namedItem('name').value,
+            email: form.elements.namedItem('email').value,
+            phone: form.elements.namedItem('phone').value,
+            subject: form.elements.namedItem('subject').value,
+            message: form.elements.namedItem('message').value,
         };
     }
-
-    /**
-     * フォーム入力値の検証
-     */
-    function validateForm(data: ContactFormData): boolean {
+    function validateForm(data) {
         if (!data.name.trim()) {
             alert('お名前を入力してください。');
             return false;
@@ -100,22 +61,14 @@ function initializeContactForm(): void {
         }
         return true;
     }
-
-    /**
-     * メールアドレスの形式を検証
-     */
-    function isValidEmail(email: string): boolean {
+    function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
 }
-
-/**
- * スムーズスクロール機能
- */
-function initializeSmoothScroll(): void {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor: Element) => {
-        anchor.addEventListener('click', function (this: HTMLAnchorElement, event: Event) {
+function initializeSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (event) {
             const href = this.getAttribute('href');
             if (href && href !== '#') {
                 event.preventDefault();
@@ -127,22 +80,16 @@ function initializeSmoothScroll(): void {
         });
     });
 }
-
-/**
- * ビジネスポップアップカードのクリック機能
- */
-function initializePopupCardClick(): void {
-    const serviceMap: { [key: number]: string } = {
+function initializePopupCardClick() {
+    const serviceMap = {
         0: '#service-sales',
         1: '#service-consulting',
         2: '#service-transportation',
         3: '#service-real_estate',
     };
-
-    document.querySelectorAll('.popup-card').forEach((card: Element, index: number) => {
-        const popupCard = card as HTMLElement;
+    document.querySelectorAll('.popup-card').forEach((card, index) => {
+        const popupCard = card;
         popupCard.style.cursor = 'pointer';
-        
         popupCard.addEventListener('click', () => {
             const targetId = serviceMap[index];
             if (targetId) {
@@ -152,29 +99,15 @@ function initializePopupCardClick(): void {
                 }
             }
         });
-
-        // ホバー効果を追加
         popupCard.addEventListener('mouseenter', () => {
             popupCard.style.transform = 'scale(1.05)';
         });
-
         popupCard.addEventListener('mouseleave', () => {
             popupCard.style.transform = 'scale(1)';
         });
     });
 }
-
-/**
- * デバイスタイプを判定
- */
-interface DeviceInfo {
-    isMobile: boolean;
-    isTablet: boolean;
-    isDesktop: boolean;
-    width: number;
-}
-
-function detectDevice(): DeviceInfo {
+function detectDevice() {
     const width = window.innerWidth;
     return {
         isMobile: width < 768,
@@ -183,19 +116,11 @@ function detectDevice(): DeviceInfo {
         width: width,
     };
 }
-
-/**
- * デバイスに応じてスタイルシートを動的に読み込む
- */
-function loadDeviceSpecificStyles(): void {
+function loadDeviceSpecificStyles() {
     const device = detectDevice();
     const head = document.head;
-    
-    // 既存のモバイルスタイルシートを確認
     const existingMobileLink = document.getElementById('mobile-stylesheet');
-    
     if (device.isMobile) {
-        // スマートフォンの場合、モバイル専用CSSを読み込む
         if (!existingMobileLink) {
             const link = document.createElement('link');
             link.id = 'mobile-stylesheet';
@@ -204,21 +129,16 @@ function loadDeviceSpecificStyles(): void {
             head.appendChild(link);
             console.log('Mobile stylesheet loaded:', device.width + 'px');
         }
-    } else {
-        // デスクトップ/タブレットの場合、モバイルCSSを削除
+    }
+    else {
         if (existingMobileLink) {
             existingMobileLink.remove();
             console.log('Mobile stylesheet removed:', device.width + 'px');
         }
     }
 }
-
-/**
- * ウィンドウリサイズ時にデバイス判定を再実行
- */
-function setupResponsiveListener(): void {
-    let resizeTimeout: number;
-    
+function setupResponsiveListener() {
+    let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = window.setTimeout(() => {
@@ -227,11 +147,7 @@ function setupResponsiveListener(): void {
         }, 250);
     });
 }
-
-/**
- * デバイス情報をコンソールに出力（デバッグ用）
- */
-function logDeviceInfo(): void {
+function logDeviceInfo() {
     const device = detectDevice();
     console.log('Device Info:', {
         isMobile: device.isMobile,
@@ -240,39 +156,22 @@ function logDeviceInfo(): void {
         width: device.width + 'px',
     });
 }
-
-// ページ読み込み時に初期化
 document.addEventListener('DOMContentLoaded', () => {
-    // デバイス検出とスタイル読み込み
     loadDeviceSpecificStyles();
     setupResponsiveListener();
     logDeviceInfo();
-    
-    // ハンバーガーメニュー初期化
     initializeHamburgerMenu();
-    
-    // 既存の初期化
     initializeContactForm();
     initializeSmoothScroll();
     initializePopupCardClick();
-    
-    // 画像読み込み完了時のアニメーション削除
     handleImageLoading();
-    
-    // ロゴクリック時のスクロール処理
     initializeLogoClick();
-    
     console.log('Company website initialized');
 });
-
-/**
- * ロゴクリック時にページトップへスクロール
- */
-function initializeLogoClick(): void {
+function initializeLogoClick() {
     const logo = document.getElementById('logo-to-top');
-    
     if (logo) {
-        logo.addEventListener('click', (event: Event) => {
+        logo.addEventListener('click', (event) => {
             event.preventDefault();
             window.scrollTo({
                 top: 0,
@@ -281,30 +180,21 @@ function initializeLogoClick(): void {
         });
     }
 }
-
-/**
- * 画像読み込み完了時のアニメーション処理
- */
-function handleImageLoading(): void {
+function handleImageLoading() {
     const images = document.querySelectorAll('img');
-    
-    images.forEach((img: HTMLImageElement) => {
-        // 既にキャッシュから読み込まれている場合
+    images.forEach((img) => {
         if (img.complete) {
             img.style.animation = 'none';
             img.style.background = 'none';
         }
-        
-        // 読み込み完了時
         img.addEventListener('load', () => {
             img.style.animation = 'none';
             img.style.background = 'none';
         });
-        
-        // エラー時もアニメーション削除
         img.addEventListener('error', () => {
             img.style.animation = 'none';
             img.style.background = 'none';
         });
     });
 }
+//# sourceMappingURL=main.js.map
