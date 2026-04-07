@@ -1,5 +1,8 @@
 /* Design Variables */
 :root {
+    /* ========================================
+       色の定義（カラーパレット）
+       ======================================== */
     --primary-color: #3B9AF5;      /* ALBAロゴの明るい青 */
     --secondary-color: #0052CC;    /* ALBAロゴの濃紺 */
     --accent-color: #001F3F;       /* より濃い紺 */
@@ -13,20 +16,66 @@
     --gradient-primary: linear-gradient(135deg, #0052CC 0%, #3B9AF5 100%);
     --gradient-dark: linear-gradient(135deg, #001F3F 0%, #0052CC 100%);
 
-    /* 三角形のカスタマイズ設定 */
-    --triangle-start: 20%;      /* 左側の不透明域のサイズ */
-    --triangle-transparent-start: 25%;  /* 透明域の開始位置 */
-    --triangle-transparent-end: 75%;    /* 透明域の終了位置 */
-    --triangle-end: 80%;        /* 右側の不透明域のサイズ */
+    /* ========================================
+       スペーシングシステム（余白）
+       0.5rem = 8px, 1rem = 16px 基準
+       ======================================== */
+    --spacing-xs: 0.25rem;    /* 4px */
+    --spacing-sm: 0.5rem;     /* 8px */
+    --spacing-md: 1rem;       /* 16px */
+    --spacing-lg: 1.5rem;     /* 24px */
+    --spacing-xl: 2rem;       /* 32px */
+    --spacing-2xl: 3rem;      /* 48px */
+    --spacing-3xl: 4rem;      /* 64px */
+
+    /* ========================================
+       タイポグラフィシステム（文字）
+       ======================================== */
+    /* 見出しサイズ */
+    --font-size-h1: 3.5rem;   /* ヒーロー用 */
+    --font-size-h2: 2rem;     /* セクション見出し */
+    --font-size-h3: 1.5rem;   /* サブ見出し */
+    --font-size-body: 1rem;   /* 本文 */
+    --font-size-sm: 0.875rem; /* 補足テキスト */
+
+    /* 行の高さ */
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.6;
+    --line-height-relaxed: 1.8;
+
+    /* 文字の太さ */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 900;
+
+    /* ========================================
+       角丸（Border Radius）
+       ======================================== */
+    --radius-none: 0;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 9999px;
+
+    /* ========================================
+       三角形のカスタマイズ設定
+       ======================================== */
+    --triangle-start: 20%;
+    --triangle-transparent-start: 25%;
+    --triangle-transparent-end: 75%;
+    --triangle-end: 80%;
 
     /* 濃い方の三角形（ドア）のカスタマイズ設定 */
-    --door-width: 40.5%;        /* ドアの幅 ← ここを変えるだけ！ */
-    --door-color-1: rgba(15, 30, 65, 0.97);    /* ドアの主要色 */
-    --door-color-2: rgba(37, 99, 235, 0.9);    /* ドアのグラデーション色 */
+    --door-width: 40.5%;
+    --door-color-1: rgba(15, 30, 65, 0.97);
+    --door-color-2: rgba(37, 99, 235, 0.9);
 
     /* アニメーション後に残る薄い三角形のカスタマイズ設定 */
-    --remaining-triangle-angle: 135deg;         /* グラデーション角度 */
-    --remaining-triangle-opacity: 0.52;         /* 不透明度 */
+    --remaining-triangle-angle: 135deg;
+    --remaining-triangle-opacity: 0.52;
     --remaining-triangle-color: rgba(37, 99, 235, var(--remaining-triangle-opacity));
 }
 
@@ -58,6 +107,9 @@ html {
 }
 
 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
     background: linear-gradient(
         90deg,
         #f0f0f0 25%,
@@ -66,16 +118,43 @@ img {
     );
     background-size: 1000px 100%;
     animation: shimmer 2s infinite;
+    border-radius: var(--radius-lg);
+}
+
+/* 読み込み完了時 */
+img.loaded {
+    animation: none;
+    background: none;
+}
+
+/* フィギュア（キャプション付き画像） */
+figure {
+    margin: var(--spacing-xl) 0;
+    text-align: center;
+}
+
+figure img {
+    margin-bottom: var(--spacing-md);
+    max-width: 100%;
+}
+
+figcaption {
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    font-style: italic;
 }
 
 body {
     font-family: var(--jp-font);
-    line-height: 1.6;
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-normal);
     color: var(--text-dark);
     background: linear-gradient(135deg, #FFFFFF 0%, var(--light-bg) 100%);
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.3px;
 }
 
 body::after {
@@ -93,12 +172,58 @@ body::after {
     z-index: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--jp-font);
-    font-weight: 700;
+h1 {
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-extrabold);
+    line-height: var(--line-height-tight);
+    letter-spacing: -0.5px;
+    margin-bottom: var(--spacing-md);
     color: var(--secondary-color);
     position: relative;
     z-index: 1;
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    letter-spacing: -0.3px;
+    margin-bottom: var(--spacing-lg);
+    color: var(--secondary-color);
+    position: relative;
+    z-index: 1;
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-md);
+    color: var(--secondary-color);
+    position: relative;
+    z-index: 1;
+}
+
+h4, h5, h6 {
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+    position: relative;
+    z-index: 1;
+}
+
+p {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-light);
+}
+
+/* 小さいテキスト */
+small {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    color: var(--text-light);
 }
 
 /* Container */
@@ -482,22 +607,28 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Sections */
 .section {
-    padding: 80px 20px;
+    padding: var(--spacing-3xl) var(--spacing-md);
     position: relative;
+    background-color: var(--white);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.section:nth-child(odd) {
+    background-color: var(--light-bg);
 }
 
 .section h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--spacing-xl);
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-family: var(--jp-font);
     position: relative;
-    padding-bottom: 1.5rem;
-    font-weight: 900;
+    padding-bottom: var(--spacing-lg);
+    font-weight: var(--font-weight-extrabold);
 }
 
 .section h2::after {
@@ -960,17 +1091,20 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Buttons */
 .btn {
-    display: inline-block;
-    padding: 1rem 2.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: var(--spacing-md) var(--spacing-lg);
     border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 700;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-semibold);
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    transition: all 0.3s ease;
     font-family: var(--jp-font);
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0, 82, 204, 0.2);
