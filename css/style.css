@@ -1399,6 +1399,12 @@ small {
         display: none !important;
     }
 
+    .hero-overlay::before,
+    .hero-overlay::after {
+        animation: none !important;
+        display: none !important;
+    }
+
     .nav-menu {
         gap: 1rem;
         font-size: 0.9rem;
