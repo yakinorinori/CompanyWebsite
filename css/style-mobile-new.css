@@ -211,6 +211,10 @@
     display: none;
 }
 
+.hero-overlay {
+    display: none;
+}
+
 .hero-content {
     position: relative;
     z-index: 3;
