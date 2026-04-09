@@ -1394,6 +1394,11 @@ small {
 }
 
 @media (max-width: 768px) {
+    /* モバイル版で左右の青い三角形を非表示 */
+    .hero-overlay {
+        display: none !important;
+    }
+
     .nav-menu {
         gap: 1rem;
         font-size: 0.9rem;
